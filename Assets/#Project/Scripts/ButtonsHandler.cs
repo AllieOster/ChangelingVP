@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class ButtonsHandler : MonoBehaviour
 {
-    public GameManager gameManager;
-
     public void changeStateViaButton()
     {
+        GameManager gameManager = GameManager.Instance;
+
+        if (gameManager == null)
+        {
+            Debug.LogError("GameManager instance not found!");
+            return; 
+        }
+
         switch (gameManager.currentState)
         {
             case GameState.Start:
@@ -27,6 +33,7 @@ public class ButtonsHandler : MonoBehaviour
                 Debug.Log($"Current GameState : {gameManager.currentState}");
                 break;
             default:
+                Debug.LogWarning("No valid state to change.");
                 break; 
         }
     }

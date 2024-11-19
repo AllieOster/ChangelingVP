@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -26,14 +27,13 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); 
-            SetGameState(GameState.Start);
-            Debug.Log($"current state : {currentState}");
+            DontDestroyOnLoad(gameObject);
         }
         else if (instance != this)
         {
             Destroy(gameObject); 
         }
+        Debug.Log(currentState);
     }
     #endregion
     public GameState currentState; 
