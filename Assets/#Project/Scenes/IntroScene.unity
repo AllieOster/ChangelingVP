@@ -219,7 +219,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 771720118}
         m_TargetAssemblyTypeName: ButtonsHandler, Assembly-CSharp
-        m_MethodName: changeStateViaButton
+        m_MethodName: ChangeStateViaButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

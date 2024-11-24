@@ -9,6 +9,9 @@ TagManager:
   - Kitchen
   - Theater
   - Lobby
+  - Board
+  - Projo
+  - GlobalView
   layers:
   - Default
   - TransparentFX

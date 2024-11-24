@@ -1,9 +1,11 @@
 using System;
 using UnityEngine;
+using Unity;
+using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
-    #region Singleton
+#region Singleton
     private static GameManager instance;
     public static GameManager Instance
     {
@@ -35,15 +37,33 @@ public class GameManager : MonoBehaviour
         }
         Debug.Log(currentState);
     }
-    #endregion
-    public GameState currentState; 
+#endregion
 
+#region GameState
+    public GameState currentState; 
     public void SetGameState(GameState newState)
     {
         currentState = newState;
     }
+
     public GameState GetGameState()
     {
         return currentState;
     }
+#endregion
+
+#region ActiveCamera
+    private CinemachineVirtualCamera activeCamera; 
+
+    public void SetActiveCamera(CinemachineVirtualCamera camera) 
+    {
+        activeCamera = camera;
+        Debug.Log("Caméra active : " + activeCamera.gameObject.name);
+    }
+
+    public CinemachineVirtualCamera GetActiveCamera() 
+    {
+        return activeCamera;
+    }
+#endregion
 }

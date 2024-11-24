@@ -1,49 +1,49 @@
-using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 
 public class GameSceneCameraManager : CameraManager
 {
-    CameraManager cameraManager;
-    [SerializeField] CinemachineVirtualCamera attickCamera;
-    [SerializeField] CinemachineVirtualCamera dormitoryCamera;
-    [SerializeField] CinemachineVirtualCamera kitchenCamera;
-    [SerializeField] CinemachineVirtualCamera theaterCamera;
-    [SerializeField] CinemachineVirtualCamera lobbyCamera;
+    private CameraManager cameraManager;
 
-    [SerializeField] GameObject roomColliders;
-
-    void Start ()
+    void Start()
     {
-        roomColliders.SetActive(true);
+        cameraManager = FindObjectOfType<CameraManager>(); 
+        if (cameraManager == null)
+        {
+            Debug.LogError("CameraManager not found! Please ensure it is present in the scene.");
+        }
     }
-    // [SerializeField] CinemachineVirtualCamera boardCamera;
+
     void OnMouseDown()
     {
-        Debug.Log("Clicked on something");
+        if (cameraManager != null) 
+        {
+            // Vérifier la tag de l'objet sur lequel on a cliqué
             switch (gameObject.tag) 
             {
                 case "Attick":
-                    cameraManager.SetCameraActive(attickCamera);
+                    cameraManager.SetCameraActive(cameraManager.attickCamera);
                     break;
                 case "Dormitory":
-                    cameraManager.SetCameraActive(dormitoryCamera);
+                    cameraManager.SetCameraActive(cameraManager.dormitoryCamera);
                     break;
                 case "Kitchen":
-                    cameraManager.SetCameraActive(kitchenCamera);
+                    cameraManager.SetCameraActive(cameraManager.kitchenCamera);
                     break;
                 case "Theater":
-                    cameraManager.SetCameraActive(theaterCamera);
+                    cameraManager.SetCameraActive(cameraManager.theaterCamera);
                     break;
                 case "Lobby":
-                    cameraManager.SetCameraActive(lobbyCamera);
+                    cameraManager.SetCameraActive(cameraManager.lobbyCamera);
                     break;
-                // case "Board":
-                //     cameraManager.SetCameraActive(boardCamera);
-                //     break;
+                case "Board":
+                    cameraManager.SetCameraActive(cameraManager.boardCamera);
+                    break;
                 default:
+                    Debug.LogWarning("No camera associated with tag: " + gameObject.tag);
                     break;
             }
         }
     }
+}
