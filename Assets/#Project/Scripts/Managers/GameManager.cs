@@ -53,8 +53,7 @@ public class GameManager : MonoBehaviour
 #endregion
 
 #region ActiveCamera
-    private CinemachineVirtualCamera activeCamera; 
-
+    public CinemachineVirtualCamera activeCamera;
     public void SetActiveCamera(CinemachineVirtualCamera camera) 
     {
         activeCamera = camera;
@@ -63,6 +62,7 @@ public class GameManager : MonoBehaviour
 
     public CinemachineVirtualCamera GetActiveCamera() 
     {
+        Debug.Log($"activeCamera via GameManager = {activeCamera}");
         return activeCamera;
     }
 #endregion

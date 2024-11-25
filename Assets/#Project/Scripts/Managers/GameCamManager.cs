@@ -13,7 +13,7 @@ public class GameCamManager : CameraManager
     public CinemachineVirtualCamera boardCamera;
     public CinemachineVirtualCamera projoCamera;
     public CinemachineVirtualCamera globalViewCamera;
-    void Start()
+    void Awake()
     {
         InitializeCamera();
     }

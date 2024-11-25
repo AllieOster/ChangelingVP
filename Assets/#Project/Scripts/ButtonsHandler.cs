@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
-
 public class ButtonsHandler : MonoBehaviour
 {
     private GameManager gameManager; 
-
+    UIHandler uiHandler;
     void Awake() 
     {
         gameManager = GameManager.Instance; 
     }
 
+    void Start()
+    {
+        uiHandler = FindObjectOfType<UIHandler>();
+    }
     public void ChangeStateViaButton()
     {
         if (gameManager == null)
@@ -39,7 +42,6 @@ public class ButtonsHandler : MonoBehaviour
                 break;
         }
     }
-
     private void ChangeState(GameState newState)
     {
         GameManager.Instance.SetGameState(newState);
@@ -55,5 +57,6 @@ public class ButtonsHandler : MonoBehaviour
             return;
         }
         gameCamManager.SetCameraActive(gameCamManager.globalViewCamera);
+        uiHandler.UpdateUIVisibility(); // 🎃🎃🎃🎃🎃🎃🎃 GERER VIA UN EVENT + LISTENER !!! 🎃🎃🎃🎃🎃🎃
     }
 }
