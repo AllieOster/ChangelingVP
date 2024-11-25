@@ -6,9 +6,9 @@ using UnityEngine;
 public class UIHandler : MonoBehaviour
 {
     [SerializeField] GameObject uIElements; 
-    void Start()
+    void Awake()
     {
-      uIElements.SetActive(false);
+      //uIElements.SetActive(false);
       Debug.Log($" Ui actif = {IsUIActive()}");
     }
     public bool IsUIActive()
@@ -16,20 +16,24 @@ public class UIHandler : MonoBehaviour
         CinemachineVirtualCamera activeCamera = GameManager.Instance.GetActiveCamera();
         if (activeCamera == null)
         {
+            Debug.Log($"sam: [UIHandler] active camera null");
             return false;
         }
 
         if (activeCamera.gameObject.name == "GlobalViewCamera")
         {
+            Debug.Log($"sam: [UIHandler] active camera global");
             return false; 
         }
         else
         {
+            Debug.Log($"sam: [UIHandler] active camera UI");
             return true;
         }
     }
     public void UpdateUIVisibility()
     {
+        Debug.Log($"sam: {IsUIActive()}");
         uIElements.SetActive(IsUIActive());
     }
 }

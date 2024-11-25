@@ -11,15 +11,15 @@ public class GameManager : MonoBehaviour
     {
         get
         {
-            if (instance == null)
+            if (instance != null)
             {
                 instance = FindObjectOfType<GameManager>();
                 
-                if (instance == null)
-                {
-                    GameObject obj = new GameObject(nameof(GameManager));
-                    instance = obj.AddComponent<GameManager>();
-                }
+            }
+            if (instance == null)
+            {
+                GameObject obj = new GameObject(nameof(GameManager));
+                instance = obj.AddComponent<GameManager>();
             }
             return instance;
         }

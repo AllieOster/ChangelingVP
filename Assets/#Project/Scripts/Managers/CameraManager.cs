@@ -5,13 +5,9 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     private CinemachineVirtualCamera activeCamera;
+
     public void SetCameraActive(CinemachineVirtualCamera cameraToActivate)
     {
-        if (cameraToActivate == null)
-        {
-            Debug.LogWarning("Pas de camera à activer !");
-            return;
-        }
 
         ResetPreviousCamera();
 
