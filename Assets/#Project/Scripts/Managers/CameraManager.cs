@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    public CinemachineVirtualCamera attickCamera;
-    public CinemachineVirtualCamera dormitoryCamera;
-    public CinemachineVirtualCamera kitchenCamera;
-    public CinemachineVirtualCamera theaterCamera;
-    public CinemachineVirtualCamera lobbyCamera;
-    public CinemachineVirtualCamera boardCamera;
-    public CinemachineVirtualCamera globalViewCamera;
-    public CinemachineVirtualCamera projoCamera;
     private CinemachineVirtualCamera activeCamera;
     public void SetCameraActive(CinemachineVirtualCamera cameraToActivate)
     {
