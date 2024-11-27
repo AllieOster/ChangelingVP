@@ -4,26 +4,15 @@ using Cinemachine;
 using UnityEngine;
 public class ButtonsHandler : MonoBehaviour
 {
-    private GameManager gameManager; 
-    UIHandler uiHandler;
-    void Awake() 
-    {
-        gameManager = GameManager.Instance; 
-    }
-
-    void Start()
-    {
-        uiHandler = FindObjectOfType<UIHandler>();
-    }
     public void ChangeStateViaButton()
     {
-        if (gameManager == null)
+        if (GameManager.Instance == null)
         {
             Debug.LogError("GameManager instance not found!");
             return;
         }
 
-        switch (gameManager.currentState)
+        switch (GameManager.Instance.currentState)
         {
             case GameState.Start:
                 ChangeState(GameState.Intro);
@@ -57,6 +46,5 @@ public class ButtonsHandler : MonoBehaviour
             return;
         }
         gameCamManager.SetCameraActive(gameCamManager.globalViewCamera);
-        uiHandler.UpdateUIVisibility(); // 🎃🎃🎃🎃🎃🎃🎃 GERER VIA UN EVENT + LISTENER !!! 🎃🎃🎃🎃🎃🎃
     }
 }

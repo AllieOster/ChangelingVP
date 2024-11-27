@@ -5,25 +5,27 @@ using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
-#region Singleton
+    #region Singleton
     private static GameManager instance;
+
     public static GameManager Instance
     {
         get
         {
-            if (instance != null)
+            if (instance == null)
             {
                 instance = FindObjectOfType<GameManager>();
                 
-            }
-            if (instance == null)
-            {
-                GameObject obj = new GameObject(nameof(GameManager));
-                instance = obj.AddComponent<GameManager>();
+                if (instance == null)
+                {
+                    GameObject obj = new GameObject(nameof(GameManager));
+                    instance = obj.AddComponent<GameManager>();
+                }
             }
             return instance;
         }
     }
+
     private void Awake()
     {
         if (instance == null)
@@ -33,11 +35,10 @@ public class GameManager : MonoBehaviour
         }
         else if (instance != this)
         {
-            Destroy(gameObject); 
+            Destroy(gameObject);
         }
-        Debug.Log(currentState);
     }
-#endregion
+    #endregion
 
 #region GameState
     public GameState currentState; 

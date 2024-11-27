@@ -4,48 +4,26 @@ using UnityEngine;
 
 public class CamZoomHandler : MonoBehaviour
 {
-
-// Tenté avec l'héritage ; il sortait les serialize pour les cams, pas pratique.
-// Pour avoir une seule ref à mes cams, je fais comme ça. 
     GameCamManager gameCamManager;
-    public UIHandler uiHandler;
-    public CollidersHandler collidersHandler;
+    public UIAndCollidersHandler uiandCollidersHandler;
+
+    public GameCamManager.GameCamera cameraToActivate;
 
     void Awake()
     {
         gameCamManager = FindObjectOfType<GameCamManager>();
     }
-    void OnMouseDown()
+    public void ZoomToCamera()
     {
-        switch (gameObject.tag) 
+        gameCamManager.SetCameraActive(cameraToActivate);
+        if (cameraToActivate == GameCamManager.GameCamera.GlobalView)
         {
-            case "Attick":
-                gameCamManager.SetCameraActive(gameCamManager.attickCamera);
-                break;
-            case "Dormitory":
-                gameCamManager.SetCameraActive(gameCamManager.dormitoryCamera);
-                break;
-            case "Kitchen":
-                gameCamManager.SetCameraActive(gameCamManager.kitchenCamera);
-                break;
-            case "Theater":
-                gameCamManager.SetCameraActive(gameCamManager.theaterCamera);
-                break;
-            case "Lobby":
-                gameCamManager.SetCameraActive(gameCamManager.lobbyCamera);
-                break;
-            case "Board":
-                gameCamManager.SetCameraActive(gameCamManager.boardCamera);
-                break;
-            case "Projo":
-                gameCamManager.SetCameraActive(gameCamManager.projoCamera);
-                break;
-            default:
-                Debug.LogWarning("No camera associated with tag: " + gameObject.tag);
-                break;
+            uiandCollidersHandler.setUIorColliderActive(true, false);
+        }
+        else
+        {
+            uiandCollidersHandler.setUIorColliderActive(false, true);
         }
         Debug.Log($"clicked on {gameObject.tag}");
-        uiHandler.UpdateUIVisibility();
-        //collidersHandler.UpdateCollidersActivity();
     }
 }
