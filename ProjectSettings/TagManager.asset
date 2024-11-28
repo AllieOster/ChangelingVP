@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Attick
   - Dormitory
   - Kitchen
   - Theater
@@ -12,6 +11,9 @@ TagManager:
   - Board
   - Projo
   - GlobalView
+  - Attic
+  - ButtonToGlobal
+  - Attick
   layers:
   - Default
   - TransparentFX

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ColliderInteraction : MonoBehaviour
+public class InteractablesActivity : MonoBehaviour
 {  
     public bool interactable = true;
     public UnityEvent onClick;

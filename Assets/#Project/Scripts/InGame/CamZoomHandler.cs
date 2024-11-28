@@ -7,7 +7,7 @@ public class CamZoomHandler : MonoBehaviour
     GameCamManager gameCamManager;
     public UIAndCollidersHandler uiandCollidersHandler;
 
-    public GameCamManager.GameCamera cameraToActivate;
+    public GameCamManager.GameCamera cameraToActivate; //variable référence enum
 
     void Awake()
     {

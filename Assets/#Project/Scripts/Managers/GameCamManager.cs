@@ -63,5 +63,4 @@ public class GameCamManager : CameraManager
                 break;
         }
     }
-
 }

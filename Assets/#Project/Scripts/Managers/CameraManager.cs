@@ -8,18 +8,13 @@ public class CameraManager : MonoBehaviour
 
     public void SetCameraActive(CinemachineVirtualCamera cameraToActivate)
     {
-        if (GameManager.Instance.activeCamera != null) 
+        if (activeCamera != null) 
         {
         ResetPreviousCamera();
         }
 
         activeCamera = cameraToActivate;
         activeCamera.Priority = 20;
-
-        if (activeCamera != null)
-        {
-        GameManager.Instance.SetActiveCamera(activeCamera);
-        }
     }
 
     private void ResetPreviousCamera()

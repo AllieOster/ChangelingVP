@@ -5,7 +5,7 @@ using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
-    #region Singleton
+#region Singleton
     private static GameManager instance;
 
     public static GameManager Instance
@@ -50,21 +50,6 @@ public class GameManager : MonoBehaviour
     public GameState GetGameState()
     {
         return currentState;
-    }
-#endregion
-
-#region ActiveCamera
-    public CinemachineVirtualCamera activeCamera;
-    public void SetActiveCamera(CinemachineVirtualCamera camera) 
-    {
-        activeCamera = camera;
-        Debug.Log("Caméra active : " + activeCamera.gameObject.name);
-    }
-
-    public CinemachineVirtualCamera GetActiveCamera() 
-    {
-        Debug.Log($"activeCamera via GameManager = {activeCamera}");
-        return activeCamera;
     }
 #endregion
 }
