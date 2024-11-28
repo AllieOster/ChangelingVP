@@ -7,7 +7,6 @@ public class CluesHandler : MonoBehaviour
 {
     public void DeactivateClue()
     {
-        Debug.Log($"{name}");
         gameObject.SetActive(false);
     }
 }

@@ -21,6 +21,12 @@ public class InteractiveObjectsCollidersHandler : MonoBehaviour
         setUIorColliderActive(false);
    }
 
+   public void ReActivateCollider()
+   {
+        setUIorColliderActive(true);
+   }
+
+
        public void setUIorColliderActive(bool collidersActivation) 
     {
         boardCollider.SetActive(collidersActivation);
