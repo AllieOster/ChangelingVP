@@ -4204,6 +4204,10 @@ PrefabInstance:
       value: InteractiveObjectsCollidersHandler, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 201109041551617923, guid: 8b18cb846699e2449ae7aa9d19ff6986, type: 3}
+      propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 241698458}
+    - target: {fileID: 201109041551617923, guid: 8b18cb846699e2449ae7aa9d19ff6986, type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
