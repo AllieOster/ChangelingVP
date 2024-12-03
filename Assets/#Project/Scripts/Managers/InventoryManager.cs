@@ -40,6 +40,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+#region Coroutines Clear + ChangeScene Lvl 1
     public IEnumerator ClearInventoryCoroutine(float delay)
     {
         yield return new WaitForSeconds(1f);
@@ -50,7 +51,6 @@ public class InventoryManager : MonoBehaviour
         }
         inventoryItems.Clear(); 
     }
-
     public IEnumerator ChangeSceneLvl1Coroutine(float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -65,5 +65,5 @@ public class InventoryManager : MonoBehaviour
     {
         StartCoroutine(ClearInventoryCoroutine(delay));
     }
-
+#endregion
 }
