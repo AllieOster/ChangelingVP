@@ -6,15 +6,39 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    public List<Item> inventoryItems = new List<Item>(); 
-    public Image[] slots; 
-    GameState gameState = GameManager.Instance.GetGameState();
+    public List<Item> inventoryItems = new List<Item>();
+    public Image[] slots;
+    public bool isInventoryFull = false;
+    private InventoryState currentState;
+
+    private void Start()
+    {
+        SetInventoryState(GameManager.Instance.GetGameState());
+    }
+
+    public void SetInventoryState(GameState gameState)
+    {
+        switch (gameState)
+        {
+            case GameState.Lvl1:
+                currentState = new Lvl1InventoryState(this);
+                break;
+            case GameState.Lvl2:
+                currentState = new Lvl2InventoryState(this);
+                break;
+            case GameState.Lvl3:
+                currentState = new Lvl3InventoryState(this);
+                break;
+            default:
+                throw new ArgumentException("GameState non pris en charge.");
+        }
+    }
+
     public void AddItem(Item newItem)
     {
         if (inventoryItems.Count < slots.Length)
         {
             inventoryItems.Add(newItem);
-
             for (int i = 0; i < slots.Length; i++)
             {
                 if (slots[i].sprite == null)
@@ -26,17 +50,14 @@ public class InventoryManager : MonoBehaviour
 
             if (inventoryItems.Count == slots.Length)
             {
-                Debug.Log("Inventory is now full!");
-                if (gameState == GameState.Lvl1)
-                {
-                ClearInventory(0.5f);
-                ChangeSceneLvl1(3.5f);
-                }
+                Debug.Log("L'inventaire est maintenant plein !");
+                isInventoryFull = true;
+                currentState.HandleInventoryFull(); 
             }
         }
         else
         {
-            Debug.Log("Cannot add item, inventory is already full.");
+            Debug.Log("Impossible d'ajouter l'élément, l'inventaire est déjà plein.");
         }
     }
 
@@ -51,19 +72,29 @@ public class InventoryManager : MonoBehaviour
         }
         inventoryItems.Clear(); 
     }
-    public IEnumerator ChangeSceneLvl1Coroutine(float delay)
+        public void ClearInventory(float delay)
+    {
+        StartCoroutine(ClearInventoryCoroutine(delay));
+    }
+
+        public IEnumerator ChangeSceneLvl1Coroutine(float delay)
     {
         yield return new WaitForSeconds(delay);
-        GameManager.Instance.SetGameState(GameState.TransitionLvl2);
+        GameState currentGameState = GameManager.Instance.GetGameState();
+        Debug.Log($"State avant changement : {currentGameState}");
+        ChangeState(GameState.TransitionLvl2);
         LoadSceneManager.ChangeScene("TransitionOneScene");
     }
     public void ChangeSceneLvl1(float delay)
     {
         StartCoroutine(ChangeSceneLvl1Coroutine(delay));
     }
-    public void ClearInventory(float delay)
+            private void ChangeState(GameState newState)
     {
-        StartCoroutine(ClearInventoryCoroutine(delay));
+        GameManager.Instance.SetGameState(newState);
+        Debug.Log($"Current GameState : {newState}");
     }
+
+
 #endregion
 }

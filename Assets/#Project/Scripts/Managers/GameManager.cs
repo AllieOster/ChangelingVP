@@ -2,23 +2,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    #region Singleton
     private static GameManager instance;
 
     public static GameManager Instance
     {
         get
         {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<GameManager>();
-                
-                if (instance == null)
-                {
-                    GameObject obj = new GameObject(nameof(GameManager));
-                    instance = obj.AddComponent<GameManager>();
-                }
-            }
             return instance;
         }
     }
@@ -29,14 +18,12 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            Debug.Log("GameManager initialized");
         }
-        else if (instance != this)
+        else
         {
             Destroy(gameObject);
         }
     }
-    #endregion
 
     #region GameState
     public GameState currentState;
