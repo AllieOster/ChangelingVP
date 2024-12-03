@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7407791857857909555}
   - component: {fileID: 201109041551617923}
   m_Layer: 0
-  m_Name: AttickCollider
+  m_Name: RoomColliderPrefab
   m_TagString: Attick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

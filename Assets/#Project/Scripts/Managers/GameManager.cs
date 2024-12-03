@@ -1,11 +1,8 @@
-using System;
 using UnityEngine;
-using Unity;
-using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
-#region Singleton
+    #region Singleton
     private static GameManager instance;
 
     public static GameManager Instance
@@ -32,6 +29,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            Debug.Log("GameManager initialized");
         }
         else if (instance != this)
         {
@@ -40,8 +38,9 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-#region GameState
-    public GameState currentState; 
+    #region GameState
+    public GameState currentState;
+
     public void SetGameState(GameState newState)
     {
         currentState = newState;
@@ -51,5 +50,5 @@ public class GameManager : MonoBehaviour
     {
         return currentState;
     }
-#endregion
+    #endregion
 }
