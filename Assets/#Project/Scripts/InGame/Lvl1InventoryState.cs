@@ -13,6 +13,4 @@ public class Lvl1InventoryState : InventoryState
         inventoryManager.ClearInventory(0.5f);
         inventoryManager.ChangeSceneLvl1(3.5f);
     }
-
-
 }
