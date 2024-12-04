@@ -9,7 +9,6 @@ public class Item : MonoBehaviour
     void Start()
     {
         inventory = FindObjectOfType<InventoryManager>();
-        // ActivateItemsBasedOnState();
     }
     void OnMouseDown() 
     {
@@ -19,13 +18,4 @@ public class Item : MonoBehaviour
             inventory.AddItem(item);
         }
     }
-
-    // void ActivateItemsBasedOnState()👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿
-    // {
-    //     GameState currentGameState = GameManager.Instance.GetGameState();
-    //     if (currentGameState == associatedGameState)
-    //     {
-    //         gameObject.SetActive(true);
-    //     }
-    // } 👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿
 }
