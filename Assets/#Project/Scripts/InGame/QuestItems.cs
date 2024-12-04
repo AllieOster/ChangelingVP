@@ -2,12 +2,14 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     public string itemName; 
+    public GameState associatedGameState;
     public Sprite icon; 
     private InventoryManager inventory; 
 
     void Start()
     {
         inventory = FindObjectOfType<InventoryManager>();
+        // ActivateItemsBasedOnState();
     }
     void OnMouseDown() 
     {
@@ -15,7 +17,15 @@ public class Item : MonoBehaviour
         if (item != null && inventory != null)
         {
             inventory.AddItem(item);
-            gameObject.SetActive(false);
         }
     }
+
+    // void ActivateItemsBasedOnState()👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿
+    // {
+    //     GameState currentGameState = GameManager.Instance.GetGameState();
+    //     if (currentGameState == associatedGameState)
+    //     {
+    //         gameObject.SetActive(true);
+    //     }
+    // } 👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿👿
 }

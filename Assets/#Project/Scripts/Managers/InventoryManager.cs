@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.XR.Haptics;
 using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
@@ -36,28 +37,36 @@ public class InventoryManager : MonoBehaviour
 
     public void AddItem(Item newItem)
     {
-        if (inventoryItems.Count < slots.Length)
-        {
-            inventoryItems.Add(newItem);
-            for (int i = 0; i < slots.Length; i++)
+        GameState currentGameState = GameManager.Instance.GetGameState();
+
+        if (newItem.associatedGameState == currentGameState) {
+            if (inventoryItems.Count < slots.Length)
             {
-                if (slots[i].sprite == null)
+                inventoryItems.Add(newItem);
+                for (int i = 0; i < slots.Length; i++)
                 {
-                    slots[i].sprite = newItem.icon;
-                    break;
+                    if (slots[i].sprite == null)
+                    {
+                        slots[i].sprite = newItem.icon;
+                        newItem.gameObject.SetActive(false);
+                        break;
+                    }
+                }
+
+                if (inventoryItems.Count == slots.Length)
+                {
+                    Debug.Log("L'inventaire est maintenant plein !");
+                    isInventoryFull = true;
+                    currentState.HandleInventoryFull(); 
                 }
             }
-
-            if (inventoryItems.Count == slots.Length)
+            else
             {
-                Debug.Log("L'inventaire est maintenant plein !");
-                isInventoryFull = true;
-                currentState.HandleInventoryFull(); 
+                Debug.Log("Impossible d'ajouter l'élément, l'inventaire est déjà plein.");
             }
         }
-        else
-        {
-            Debug.Log("Impossible d'ajouter l'élément, l'inventaire est déjà plein.");
+        else {
+            Debug.Log("Not the right lvl to try and add this one");
         }
     }
 

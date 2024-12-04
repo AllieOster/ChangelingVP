@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: 
+  associatedGameState: 2
   icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!60 &-110313396822559826
 PolygonCollider2D:

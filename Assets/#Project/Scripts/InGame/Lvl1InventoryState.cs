@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class Lvl1InventoryState : InventoryState
 {
     public Lvl1InventoryState(InventoryManager manager) : base(manager) { }
-
     public override void HandleInventoryFull()
     {
         inventoryManager.ClearInventory(0.5f);
