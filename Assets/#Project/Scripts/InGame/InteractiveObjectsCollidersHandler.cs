@@ -19,13 +19,13 @@ public class InteractiveObjectsCollidersHandler : MonoBehaviour
    public void DeActivateCollider(GameObject collider)
    {
         setUIorColliderActive(false);
-   }
-
+   } 
    public void ReActivateCollider()
    {
         setUIorColliderActive(true);
    }
 
+   // ☠️☠️☠️☠️☠️ Ces deux là on peut en faire une fonction booléenne ==> check check ☠️☠️☠️☠️☠️
 
        public void setUIorColliderActive(bool collidersActivation) 
     {
