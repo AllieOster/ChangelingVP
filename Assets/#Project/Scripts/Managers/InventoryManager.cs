@@ -81,12 +81,12 @@ public class InventoryManager : MonoBehaviour
         }
         inventoryItems.Clear(); 
     }
-        public void ClearInventory(float delay)
+    public void ClearInventory(float delay)
     {
         StartCoroutine(ClearInventoryCoroutine(delay));
     }
 
-        public IEnumerator ChangeSceneLvl1Coroutine(float delay)
+    public IEnumerator ChangeSceneLvl1Coroutine(float delay)
     {
         yield return new WaitForSeconds(delay);
         GameState currentGameState = GameManager.Instance.GetGameState();
