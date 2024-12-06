@@ -11,6 +11,7 @@ public class InventoryManager : MonoBehaviour
     public Image[] slots;
     public bool isInventoryFull = false;
     private InventoryState currentState;
+    public DragAndDrop dragAndDrop;
 
     private void Start()
     {
@@ -103,7 +104,10 @@ public class InventoryManager : MonoBehaviour
         GameManager.Instance.SetGameState(newState);
         Debug.Log($"Current GameState : {newState}");
     }
-
-
 #endregion
+
+    public void SetCanIDrag(bool dragPermission)
+    {
+        dragAndDrop.SetDragPermission(dragPermission);
+    }
 }

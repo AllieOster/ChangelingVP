@@ -8,7 +8,7 @@ public class Lvl2InventoryState : InventoryState
 
     public override void HandleInventoryFull()
     {
-        // Comportement pour Lvl2 à implémenter (drag & drop ???)
-        Debug.Log("Inventaire plein au niveau 2. Comportement spécifique ici.");
+        inventoryManager.SetCanIDrag(true);
+        Debug.Log("Inventaire plein au niveau 2");
     }
 }

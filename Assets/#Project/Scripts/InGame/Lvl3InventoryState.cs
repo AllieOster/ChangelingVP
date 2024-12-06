@@ -8,7 +8,7 @@ public class Lvl3InventoryState : InventoryState
 
     public override void HandleInventoryFull()
     {
-        // Comportement pour Lvl3 à implémenter
-        Debug.Log("Inventaire plein au niveau 3. Comportement spécifique ici.");
+        // Comportement pour Lvl3 à implémenter (presque même que le deux)
+        Debug.Log("Inventaire plein au niveau 3");
     }
 }
