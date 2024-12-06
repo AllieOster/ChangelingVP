@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private Vector3 initialPosition; 
-    public bool canIDrag; 
+    static bool canIDrag; 
 
     void Start()
     {
