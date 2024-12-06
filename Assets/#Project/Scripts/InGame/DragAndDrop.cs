@@ -6,14 +6,10 @@ using UnityEngine.EventSystems;
 public class InventorySlots : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private Vector3 initialPosition; 
-
-    public void Start()
+    public void OnBeginDrag(PointerEventData eventData)
     {
         RectTransform rt = GetComponent<RectTransform>();
         initialPosition = rt.position; 
-    }
-    public void OnBeginDrag(PointerEventData eventData)
-    {
         Debug.Log("Begin Drag");
     }
 
@@ -32,8 +28,8 @@ public class InventorySlots : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
     {
         Debug.Log("End Drag");
         RectTransform rt = GetComponent<RectTransform>();
-            rt.position = initialPosition; 
-            Debug.Log("Returned to initial position");
+        rt.position = initialPosition; 
+        Debug.Log("Returned to initial position");
     }
 
     public void OnPointerEnter(PointerEventData eventData)
