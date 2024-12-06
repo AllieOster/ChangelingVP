@@ -17,6 +17,7 @@ TagManager:
   - QuestItemLvl1
   - QuestItemLvl2
   - QuestItemLvl3
+  - DirDropZone
   layers:
   - Default
   - TransparentFX
