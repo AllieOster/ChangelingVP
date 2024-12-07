@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,7 +7,7 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 {
     private Vector3 initialPosition; 
     static bool canIDrag; 
-    public DropZonePapers dropZone;
+
     void Start()
     {
         canIDrag = false;
@@ -23,11 +22,10 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     {
         if (!canIDrag)
         {
-        Debug.Log( "canDrag est à false");
-         return; 
+            Debug.Log("canDrag est à false");
+            return; 
         }
             
-
         RectTransform rt = GetComponent<RectTransform>();
         initialPosition = rt.position; 
         Debug.Log("Begin Drag");
@@ -39,6 +37,7 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
         RectTransform rt = GetComponent<RectTransform>();
         Vector3 worldPosition;
+
         if (RectTransformUtility.ScreenPointToWorldPointInRectangle((RectTransform)transform.parent, eventData.position, eventData.pressEventCamera, out worldPosition))
         {
             rt.position = worldPosition; 
@@ -51,19 +50,10 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 
         RectTransform rt = GetComponent<RectTransform>();
 
-        // Déterminez si l'objet a été déposé dans la drop zone
-        if (dropZone != null && RectTransformUtility.RectangleContainsScreenPoint(dropZone.GetComponent<RectTransform>(), eventData.position, eventData.pressEventCamera))
-        {
-            Debug.Log("Objet déposé sur la Drop Zone !");
-            dropZone.AddToGivenList(this.GetComponent<Item>());
-        }
-        else
-        {
-            Debug.Log("Objet déposé en dehors de la Drop Zone.");
-            rt.position = initialPosition; // Retourne à la position initiale si l'endroit est incorrect
-        }
+        // Retourne à la position initiale si l'objet n'est pas déposé
+        rt.position = initialPosition; 
+        Debug.Log("Objet retour à la position initiale.");
     }
-
 
     public void OnPointerEnter(PointerEventData eventData)
     {

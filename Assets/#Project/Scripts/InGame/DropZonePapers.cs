@@ -7,41 +7,65 @@ public class DropZonePapers : MonoBehaviour
     public List<Item> papersInOrder = new List<Item>();
     public List<Item> givenPapers = new List<Item>();
 
-public void AddToGivenList(Item paper)
-{
-    givenPapers.Add(paper);
-    CheckOrder();
-}
-
-private void CheckOrder()
-{
-    // Si les données ne correspondent pas, réinitialise la liste 🎃🎃
-    if (givenPapers.Count > papersInOrder.Count || 
-        givenPapers[givenPapers.Count - 1] != papersInOrder[givenPapers.Count - 1])
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Erreur lors du dépôt des papiers. Réinitialisation...");
-        ResetGivenPapers();
-    }
-    else if (givenPapers.Count == papersInOrder.Count)
-    {
-        Debug.Log("Niveau validé !");
-        ResetGivenPapers();
-        // méthode de validation à mettre ici !!! 🎃🎃🎃🎃🎃
-    }
-}
-
-private void ResetGivenPapers()
-{
-    foreach (var paper in givenPapers)
-    {
-        if (paper != null)
+        Item item = other.GetComponent<Item>();
+        if (item != null)
         {
-            paper.gameObject.SetActive(true); 
-            InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
-            inventoryManager.RemoveItem(paper); 
+            Debug.Log("Un objet est entré dans la zone : " + item.itemName);
+            AddToGivenList(item);
         }
     }
-    givenPapers.Clear();
-}
 
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        Item item = other.GetComponent<Item>();
+        if (item != null)
+        {
+            Debug.Log("Un objet est sorti de la zone : " + item.itemName);
+
+        }
+    }
+
+    public void OnMouseDown()
+    {
+        Debug.Log("cliqué sur directeur");
+    }
+
+    public void AddToGivenList(Item paper)
+    {
+        givenPapers.Add(paper);
+        CheckOrder();
+    }
+
+    private void CheckOrder()
+    {
+        // Si les données ne correspondent pas, réinitialise la liste
+        if (givenPapers.Count > papersInOrder.Count || 
+            givenPapers[givenPapers.Count - 1] != papersInOrder[givenPapers.Count - 1])
+        {
+            Debug.Log("Erreur lors du dépôt des papiers. Réinitialisation...");
+            ResetGivenPapers();
+        }
+        else if (givenPapers.Count == papersInOrder.Count)
+        {
+            Debug.Log("Niveau validé !");
+            ResetGivenPapers();
+            // méthode de validation à mettre ici
+        }
+    }
+
+    private void ResetGivenPapers()
+    {
+        foreach (var paper in givenPapers)
+        {
+            if (paper != null)
+            {
+                paper.gameObject.SetActive(true); 
+                InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
+                inventoryManager.RemoveItem(paper); 
+            }
+        }
+        givenPapers.Clear();
+    }
 }

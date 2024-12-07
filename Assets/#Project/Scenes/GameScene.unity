@@ -3354,9 +3354,11 @@ GameObject:
   m_Component:
   - component: {fileID: 942924937}
   - component: {fileID: 942924936}
-  - component: {fileID: 942924938}
+  - component: {fileID: 942924940}
   - component: {fileID: 942924939}
-  m_Layer: 0
+  - component: {fileID: 942924938}
+  - component: {fileID: 942924941}
+  m_Layer: 5
   m_Name: Director
   m_TagString: DirDropZone
   m_Icon: {fileID: 0}
@@ -3403,7 +3405,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
   m_Color: {r: 0.1981132, g: 0.13009216, b: 0.09438412, a: 1}
   m_FlipX: 0
@@ -3430,8 +3432,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &942924938
-PolygonCollider2D:
+--- !u!114 &942924938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942924935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a0062a8a3fe284fbca1dd436462379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  papersInOrder:
+  - {fileID: 9086771665910729861}
+  - {fileID: 1707887959}
+  - {fileID: 923614092}
+  - {fileID: 1993365109}
+  - {fileID: 2094068473}
+  givenPapers: []
+--- !u!61 &942924939
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3442,7 +3463,7 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 32
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3472,14 +3493,10 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 0.25}
-      - {x: -0.5, y: 0}
-      - {x: 0, y: -0.25}
-      - {x: 0.5, y: 0}
-  m_UseDelaunayMesh: 0
---- !u!114 &942924939
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5}
+  m_EdgeRadius: 0
+--- !u!114 &942924940
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3488,16 +3505,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 942924935}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23a0062a8a3fe284fbca1dd436462379, type: 3}
+  m_Script: {fileID: 11500000, guid: 23aa1848d1995b34fb8d2228883a2d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  papersInOrder:
-  - {fileID: 9086771665910729861}
-  - {fileID: 1707887959}
-  - {fileID: 923614092}
-  - {fileID: 1993365109}
-  - {fileID: 2094068473}
-  givenPapers: []
+--- !u!50 &942924941
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942924935}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &943168301
 GameObject:
   m_ObjectHideFlags: 0
@@ -4694,7 +4731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1649545864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5025,7 +5062,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23aa1848d1995b34fb8d2228883a2d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropZone: {fileID: 942924939}
 --- !u!4 &1720694827
 Transform:
   m_ObjectHideFlags: 0
@@ -6440,5 +6476,5 @@ SceneRoots:
   - {fileID: 51230000}
   - {fileID: 213711560}
   - {fileID: 133158834}
-  - {fileID: 942924937}
   - {fileID: 1720694827}
+  - {fileID: 942924937}
