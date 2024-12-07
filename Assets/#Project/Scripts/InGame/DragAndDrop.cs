@@ -8,7 +8,7 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 {
     private Vector3 initialPosition; 
     static bool canIDrag; 
-
+    public DropZonePapers dropZone;
     void Start()
     {
         canIDrag = false;
@@ -49,11 +49,21 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     {
         if (!canIDrag) return; 
 
-        Debug.Log("End Drag");
         RectTransform rt = GetComponent<RectTransform>();
-        rt.position = initialPosition; 
-        Debug.Log("Returned to initial position");
+
+        // Déterminez si l'objet a été déposé dans la drop zone
+        if (dropZone != null && RectTransformUtility.RectangleContainsScreenPoint(dropZone.GetComponent<RectTransform>(), eventData.position, eventData.pressEventCamera))
+        {
+            Debug.Log("Objet déposé sur la Drop Zone !");
+            dropZone.AddToGivenList(this.GetComponent<Item>());
+        }
+        else
+        {
+            Debug.Log("Objet déposé en dehors de la Drop Zone.");
+            rt.position = initialPosition; // Retourne à la position initiale si l'endroit est incorrect
+        }
     }
+
 
     public void OnPointerEnter(PointerEventData eventData)
     {

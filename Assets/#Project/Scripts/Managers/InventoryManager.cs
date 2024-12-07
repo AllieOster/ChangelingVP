@@ -110,4 +110,21 @@ public class InventoryManager : MonoBehaviour
     {
         dragAndDrop.SetDragPermission(dragPermission);
     }
+    
+    public void RemoveItem(Item itemToRemove)
+{
+    if (inventoryItems.Contains(itemToRemove))
+    {
+        inventoryItems.Remove(itemToRemove);
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i].sprite == itemToRemove.icon)
+            {
+                slots[i].sprite = null; // Enlève uniquement l'icône de l'inventaire
+                break; 
+            }
+        }
+    }
+}
+
 }
