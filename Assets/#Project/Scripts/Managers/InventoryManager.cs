@@ -50,12 +50,15 @@ public class InventoryManager : MonoBehaviour
                     {
                         slots[i].sprite = newItem.icon;
                         newItem.gameObject.SetActive(false);
-                        Debug.Log($"Ajout de '{newItem.itemName}' dans le slot {i}.");
-                        if (i == newItem.dedicatedSlot)
+                        Image imageComponent = slots[i].GetComponent<Image>();
+                        if (imageComponent != null)
                         {
-                            isAtRightPlace = true;
-                            Debug.Log("objet placé à la bonne place dans l'inventaire");
+                            Color color = imageComponent.color;
+                            color.a = 1f; 
+                            imageComponent.color = color;
                         }
+
+                        Debug.Log($"Ajout de '{newItem.itemName}' dans le slot {i}.");
                         break;
                     }
                 }
@@ -83,8 +86,14 @@ public class InventoryManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         for (int i = 0; i < slots.Length; i++)
-        {
+        {  
+            Image imageComponent = slots[i].GetComponent<Image>();
+            Color color = imageComponent.color;
+                            color.a = 0f; 
+                            imageComponent.color = color;
+
             slots[i].sprite = null; 
+            
             yield return new WaitForSeconds(delay); 
         }
         inventoryItems.Clear(); 
