@@ -5,6 +5,7 @@ public class Item : MonoBehaviour
     public GameState associatedGameState;
     public Sprite icon; 
     private InventoryManager inventory; 
+    public int dedicatedSlot;
 
     void Start()
     {

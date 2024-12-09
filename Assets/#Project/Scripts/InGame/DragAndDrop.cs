@@ -49,9 +49,25 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         if (!canIDrag) return; 
 
         RectTransform rt = GetComponent<RectTransform>();
-        rt.position = initialPosition; 
-        Debug.Log("Objet retour à la position initiale.");
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(eventData.position), Vector2.zero);
+
+        if (hit.collider != null && hit.collider.CompareTag("DirDropZone"))
+        {
+            Debug.Log("Objet déposé dans la DropZone");
+            DropZonePapers dropZone = hit.collider.GetComponent<DropZonePapers>();
+            if (dropZone != null)
+            {
+                dropZone.AddToGivenList(GetComponent<Item>());
+                gameObject.SetActive(false); 
+            }
+        }
+        else
+        {
+            rt.position = initialPosition; 
+            Debug.Log("Objet retour à la position initiale.");
+        }
     }
+
 
     public void OnPointerEnter(PointerEventData eventData)
     {

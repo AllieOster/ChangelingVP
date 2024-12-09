@@ -7,50 +7,56 @@ public class DropZonePapers : MonoBehaviour
     public List<Item> papersInOrder = new List<Item>();
     public List<Item> givenPapers = new List<Item>();
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        Item item = other.GetComponent<Item>();
-        if (item != null)
-        {
-            Debug.Log("Un objet est entré dans la zone : " + item.itemName);
-            AddToGivenList(item);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        Item item = other.GetComponent<Item>();
-        if (item != null)
-        {
-            Debug.Log("Un objet est sorti de la zone : " + item.itemName);
-
-        }
-    }
-
     public void OnMouseDown()
     {
         Debug.Log("cliqué sur directeur");
     }
-
     public void AddToGivenList(Item paper)
     {
+        if (paper == null)
+        {
+            Debug.LogError("Tentative d'ajouter un objet null à givenPapers !");
+            return;
+        }
+
         givenPapers.Add(paper);
         CheckOrder();
     }
 
     private void CheckOrder()
     {
-        if (givenPapers.Count > papersInOrder.Count || 
-            givenPapers[givenPapers.Count - 1] != papersInOrder[givenPapers.Count - 1])
+        Debug.Log("Nombre de papiers donnés : " + givenPapers.Count);
+        Debug.Log("Nombre de papiers en ordre : " + papersInOrder.Count);
+
+        if (givenPapers.Count > papersInOrder.Count)
         {
             Debug.Log("Erreur lors du dépôt des papiers. Réinitialisation...");
             ResetGivenPapers();
+            return;
         }
-        else if (givenPapers.Count == papersInOrder.Count)
+        
+        for (int i = 0; i < givenPapers.Count; i++)
+        {
+            if (givenPapers[i] == null || papersInOrder[i] == null)
+            {
+                Debug.LogError("Un des objets Item est nul à l'index " + i);
+                ResetGivenPapers();
+                return;
+            }
+
+            if (givenPapers[i].icon != papersInOrder[i].icon)
+            {
+                Debug.Log("Erreur lors du dépôt des papiers. Réinitialisation...");
+                ResetGivenPapers();
+                return;
+            }
+        }
+
+        if (givenPapers.Count == papersInOrder.Count)
         {
             Debug.Log("Niveau validé !");
             ResetGivenPapers();
-            // méthode de validation à mettre ici !!!??? Event quoi ? 
+            // Appeler méthode de validation ici ! =) 
         }
     }
 

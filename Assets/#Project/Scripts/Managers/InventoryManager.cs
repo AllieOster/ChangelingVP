@@ -12,12 +12,12 @@ public class InventoryManager : MonoBehaviour
     public bool isInventoryFull = false;
     private InventoryState currentState;
     public DragAndDrop dragAndDrop;
+    public bool isAtRightPlace = false;
 
     private void Start()
     {
         SetInventoryState(GameManager.Instance.GetGameState());
     }
-
     public void SetInventoryState(GameState gameState)
     {
         switch (gameState)
@@ -36,7 +36,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void AddItem(Item newItem)
+        public void AddItem(Item newItem)
     {
         GameState currentGameState = GameManager.Instance.GetGameState();
 
@@ -50,6 +50,12 @@ public class InventoryManager : MonoBehaviour
                     {
                         slots[i].sprite = newItem.icon;
                         newItem.gameObject.SetActive(false);
+                        Debug.Log($"Ajout de '{newItem.itemName}' dans le slot {i}.");
+                        if (i == newItem.dedicatedSlot)
+                        {
+                            isAtRightPlace = true;
+                            Debug.Log("objet placé à la bonne place dans l'inventaire");
+                        }
                         break;
                     }
                 }
@@ -70,6 +76,7 @@ public class InventoryManager : MonoBehaviour
             Debug.Log("Not the right lvl to try and add this one");
         }
     }
+
 
 #region Coroutines Clear + ChangeScene Lvl 1
     public IEnumerator ClearInventoryCoroutine(float delay)
