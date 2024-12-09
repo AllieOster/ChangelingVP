@@ -49,8 +49,6 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         if (!canIDrag) return; 
 
         RectTransform rt = GetComponent<RectTransform>();
-
-        // Retourne à la position initiale si l'objet n'est pas déposé
         rt.position = initialPosition; 
         Debug.Log("Objet retour à la position initiale.");
     }

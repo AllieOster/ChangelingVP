@@ -40,7 +40,6 @@ public class DropZonePapers : MonoBehaviour
 
     private void CheckOrder()
     {
-        // Si les données ne correspondent pas, réinitialise la liste
         if (givenPapers.Count > papersInOrder.Count || 
             givenPapers[givenPapers.Count - 1] != papersInOrder[givenPapers.Count - 1])
         {
@@ -51,7 +50,7 @@ public class DropZonePapers : MonoBehaviour
         {
             Debug.Log("Niveau validé !");
             ResetGivenPapers();
-            // méthode de validation à mettre ici
+            // méthode de validation à mettre ici !!!??? Event quoi ? 
         }
     }
 
