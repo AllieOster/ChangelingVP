@@ -12,7 +12,6 @@ public class InventoryManager : MonoBehaviour
     public bool isInventoryFull = false;
     private InventoryState currentState;
     public DragAndDrop dragAndDrop;
-    public bool isAtRightPlace = false;
 
     private void Start()
     {
@@ -48,6 +47,7 @@ public class InventoryManager : MonoBehaviour
                 {
                     if (slots[i].sprite == null)
                     {
+                        if (slots[i] == newItem.icon){} // CHECK PAR ICI !!!! 
                         slots[i].sprite = newItem.icon;
                         newItem.gameObject.SetActive(false);
                         Image imageComponent = slots[i].GetComponent<Image>();
