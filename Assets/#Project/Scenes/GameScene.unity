@@ -563,7 +563,7 @@ PrefabInstance:
     - target: {fileID: -9635324659174335, guid: b1f3bd7ab5a6a3c48aafaacca90b4f34, type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: 21300000, guid: 25173db28bccd474cbd4cc5f78b8b0ac, type: 3}
+      objectReference: {fileID: 21300000, guid: 202df4423f9dd8d4a9bcc9f292be4b16, type: 3}
     - target: {fileID: -9635324659174335, guid: b1f3bd7ab5a6a3c48aafaacca90b4f34, type: 3}
       propertyPath: itemName
       value: CardBoard
@@ -1008,7 +1008,7 @@ PrefabInstance:
     - target: {fileID: -9635324659174335, guid: b1f3bd7ab5a6a3c48aafaacca90b4f34, type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: 21300000, guid: 0136835ac5d0a42469c057917d8796fc, type: 3}
+      objectReference: {fileID: 21300000, guid: 8e8bd845d237d1943b053f4d146e7c0f, type: 3}
     - target: {fileID: -9635324659174335, guid: b1f3bd7ab5a6a3c48aafaacca90b4f34, type: 3}
       propertyPath: itemName
       value: Scissors
@@ -5006,7 +5006,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1649545864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6709,7 +6709,7 @@ PrefabInstance:
     - target: {fileID: -9635324659174335, guid: b1f3bd7ab5a6a3c48aafaacca90b4f34, type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: 21300000, guid: b86401734eea7764c830bb797e1188fe, type: 3}
+      objectReference: {fileID: 21300000, guid: f01fe88438506804388c1b5b6c9f6b39, type: 3}
     - target: {fileID: -9635324659174335, guid: b1f3bd7ab5a6a3c48aafaacca90b4f34, type: 3}
       propertyPath: itemName
       value: Rope
