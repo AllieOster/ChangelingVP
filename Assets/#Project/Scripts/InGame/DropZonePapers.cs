@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 public class DropZonePapers : MonoBehaviour
 {
-    public List<Item> papersInOrder = new List<Item>();
-    public List<Item> givenPapers = new List<Item>();
+    public List<Image> papersInOrder = new List<Image>();
+    public List<Image> givenPapers = new List<Image>();
 
     public void OnMouseDown()
     {
         Debug.Log("cliqué sur directeur");
     }
-    public void AddToGivenList(Item paper)
+    public void AddToGivenList(Image paper)
     {
         if (paper == null)
         {
@@ -19,7 +20,7 @@ public class DropZonePapers : MonoBehaviour
             return;
         }
 
-        givenPapers.Add(paper);
+        givenPapers.Add(paper); // changé pour Image
         CheckOrder();
     }
 
@@ -44,7 +45,7 @@ public class DropZonePapers : MonoBehaviour
                 return;
             }
 
-            if (givenPapers[i].icon != papersInOrder[i].icon)
+            if (givenPapers[i] != papersInOrder[i])
             {
                 Debug.Log("Erreur lors du dépôt des papiers. Réinitialisation...");
                 ResetGivenPapers();
@@ -62,15 +63,6 @@ public class DropZonePapers : MonoBehaviour
 
     private void ResetGivenPapers()
     {
-        foreach (var paper in givenPapers)
-        {
-            if (paper != null)
-            {
-                paper.gameObject.SetActive(true); 
-                InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
-                inventoryManager.RemoveItem(paper); 
-            }
-        }
         givenPapers.Clear();
     }
 }

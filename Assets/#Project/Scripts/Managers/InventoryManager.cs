@@ -35,7 +35,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-        public void AddItem(Item newItem)
+    public void AddItem(Item newItem)
     {
         GameState currentGameState = GameManager.Instance.GetGameState();
 
@@ -47,7 +47,7 @@ public class InventoryManager : MonoBehaviour
                 {
                     if (slots[i].sprite == null)
                     {
-                        if (slots[i] == newItem.icon){} // CHECK PAR ICI !!!! 
+                        // if (slots[i] == newItem.icon){} // CHECK PAR ICI !!!! 
                         slots[i].sprite = newItem.icon;
                         newItem.gameObject.SetActive(false);
                         Image imageComponent = slots[i].GetComponent<Image>();
@@ -134,7 +134,7 @@ public class InventoryManager : MonoBehaviour
         inventoryItems.Remove(itemToRemove);
         for (int i = 0; i < slots.Length; i++)
         {
-            if (slots[i].sprite == itemToRemove.icon)
+            if (slots[i].sprite == itemToRemove.icon) // POURQUOIIII ???
             {
                 slots[i].sprite = null; // Enlève uniquement l'icône de l'inventaire
                 break; 

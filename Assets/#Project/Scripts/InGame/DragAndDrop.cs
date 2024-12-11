@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -7,17 +8,14 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 {
     private Vector3 initialPosition; 
     static bool canIDrag; 
-
     void Start()
     {
         canIDrag = false;
     }
-
     public void SetDragPermission(bool permission)
     {
         canIDrag = permission; 
     }
-
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (!canIDrag)
@@ -30,7 +28,6 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         initialPosition = rt.position; 
         Debug.Log("Begin Drag");
     }
-
     public void OnDrag(PointerEventData eventData)
     {
         if (!canIDrag) return; 
@@ -43,7 +40,6 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
             rt.position = worldPosition; 
         }
     }
-
     public void OnEndDrag(PointerEventData eventData)
     {
         if (!canIDrag) return; 
@@ -57,7 +53,8 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
             DropZonePapers dropZone = hit.collider.GetComponent<DropZonePapers>();
             if (dropZone != null)
             {
-                dropZone.AddToGivenList(GetComponent<Item>());
+                Image paperImage = GetComponent<Image>();
+                dropZone.AddToGivenList(paperImage); 
                 gameObject.SetActive(false); 
             }
         }
@@ -67,8 +64,6 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
             Debug.Log("Objet retour à la position initiale.");
         }
     }
-
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         Debug.Log("Pointer Enter");
