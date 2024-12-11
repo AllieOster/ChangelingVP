@@ -2,36 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 
 public class DropZonePapers : MonoBehaviour
 {
-    public List<Image> papersInOrder = new List<Image>();
-    public List<Image> givenPapers = new List<Image>();
+    public List<Item> papersInOrder = new List<Item>();
+    public List<Item> givenPapers = new List<Item>();
 
     public void OnMouseDown()
     {
         Debug.Log("cliqué sur directeur");
     }
-    public void AddToGivenList(Image paper)
-    {
-        if (paper == null)
-        {
-            Debug.LogError("Tentative d'ajouter un objet null à givenPapers !");
-            return;
-        }
+    public List<Item> droppedItems = new List<Item>();
 
-        givenPapers.Add(paper); // changé pour Image
-        CheckOrder();
+    public void AddToGivenList(Item item)
+    {
+        if (item != null)
+        {
+            givenPapers.Add(item);
+            Debug.Log($"Item '{item.itemName}' added to drop zone.");
+            foreach (var thing in givenPapers) 
+            {
+                Debug.Log($"List updated, list : {thing}");
+            }
+            CheckOrder();
+        }
+        else
+        {
+            Debug.LogWarning("Error: Attempted to add a null item to the drop zone.");
+        }
     }
+
 
     private void CheckOrder()
     {
         Debug.Log("Nombre de papiers donnés : " + givenPapers.Count);
-        Debug.Log("Nombre de papiers en ordre : " + papersInOrder.Count);
 
         if (givenPapers.Count > papersInOrder.Count)
         {
-            Debug.Log("Erreur lors du dépôt des papiers. Réinitialisation...");
+            Debug.Log("Erreur lors du dépôt des papiers. Réinitialisation... Trop de papiers");
             ResetGivenPapers();
             return;
         }
@@ -64,5 +74,6 @@ public class DropZonePapers : MonoBehaviour
     private void ResetGivenPapers()
     {
         givenPapers.Clear();
+        gameObject.SetActive(true);
     }
 }

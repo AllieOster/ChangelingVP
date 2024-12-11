@@ -47,7 +47,6 @@ public class InventoryManager : MonoBehaviour
                 {
                     if (slots[i].sprite == null)
                     {
-                        // if (slots[i] == newItem.icon){} // CHECK PAR ICI !!!! 
                         slots[i].sprite = newItem.icon;
                         newItem.gameObject.SetActive(false);
                         Image imageComponent = slots[i].GetComponent<Image>();
@@ -127,7 +126,7 @@ public class InventoryManager : MonoBehaviour
         dragAndDrop.SetDragPermission(dragPermission);
     }
     
-    public void RemoveItem(Item itemToRemove)
+    public void RemoveItem(Item itemToRemove) // Recommencer, ça marche pas. 
 {
     if (inventoryItems.Contains(itemToRemove))
     {

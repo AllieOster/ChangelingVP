@@ -8,14 +8,20 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
 {
     private Vector3 initialPosition; 
     static bool canIDrag; 
+    private InventoryManager inventoryManager;
+    private int currentSlotIndex = -1; 
+
     void Start()
     {
         canIDrag = false;
+        inventoryManager = FindObjectOfType<InventoryManager>(); 
     }
+
     public void SetDragPermission(bool permission)
     {
         canIDrag = permission; 
     }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (!canIDrag)
@@ -23,11 +29,22 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
             Debug.Log("canDrag est à false");
             return; 
         }
-            
+
         RectTransform rt = GetComponent<RectTransform>();
+        for (int i = 0; i < inventoryManager.slots.Length; i++)
+        {
+            if (inventoryManager.slots[i].rectTransform == rt)
+            {
+                currentSlotIndex = i;
+                Debug.Log($"Begin Drag from slot index: {currentSlotIndex}");
+                break;
+            }
+        }
+
         initialPosition = rt.position; 
         Debug.Log("Begin Drag");
     }
+
     public void OnDrag(PointerEventData eventData)
     {
         if (!canIDrag) return; 
@@ -40,6 +57,7 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
             rt.position = worldPosition; 
         }
     }
+
     public void OnEndDrag(PointerEventData eventData)
     {
         if (!canIDrag) return; 
@@ -51,10 +69,10 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         {
             Debug.Log("Objet déposé dans la DropZone");
             DropZonePapers dropZone = hit.collider.GetComponent<DropZonePapers>();
-            if (dropZone != null)
+            if (dropZone != null && currentSlotIndex >= 0)
             {
-                Image paperImage = GetComponent<Image>();
-                dropZone.AddToGivenList(paperImage); 
+                Item currentItem = inventoryManager.inventoryItems[currentSlotIndex];
+                dropZone.AddToGivenList(currentItem); 
                 gameObject.SetActive(false); 
             }
         }
@@ -63,7 +81,9 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
             rt.position = initialPosition; 
             Debug.Log("Objet retour à la position initiale.");
         }
+        currentSlotIndex = -1;
     }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         Debug.Log("Pointer Enter");
