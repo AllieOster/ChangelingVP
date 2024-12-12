@@ -3277,7 +3277,7 @@ PrefabInstance:
     - target: {fileID: 1200459960415377115, guid: fe4525f841273844e821e5a248c8257d, type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: 21300000, guid: aa1b5c724e66aa54e9daa211f959a89e, type: 3}
+      objectReference: {fileID: 21300000, guid: fd07002fea2fb6f4cb991bdd9899e88c, type: 3}
     - target: {fileID: 1200459960415377115, guid: fe4525f841273844e821e5a248c8257d, type: 3}
       propertyPath: itemName
       value: Paper3
@@ -3682,7 +3682,6 @@ MonoBehaviour:
   - {fileID: 1993365111}
   - {fileID: 2094068475}
   givenPapers: []
-  droppedItems: []
 --- !u!61 &942924939
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5307,7 +5306,7 @@ PrefabInstance:
     - target: {fileID: 1200459960415377115, guid: fe4525f841273844e821e5a248c8257d, type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: 21300000, guid: fd07002fea2fb6f4cb991bdd9899e88c, type: 3}
+      objectReference: {fileID: 21300000, guid: a669aac6b3a247041a02cf543fe90079, type: 3}
     - target: {fileID: 1200459960415377115, guid: fe4525f841273844e821e5a248c8257d, type: 3}
       propertyPath: itemName
       value: Paper2
@@ -6325,7 +6324,7 @@ PrefabInstance:
     - target: {fileID: 1200459960415377115, guid: fe4525f841273844e821e5a248c8257d, type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: 21300000, guid: 0da45a666ec2df74591b659d52e3e119, type: 3}
+      objectReference: {fileID: 21300000, guid: aa1b5c724e66aa54e9daa211f959a89e, type: 3}
     - target: {fileID: 1200459960415377115, guid: fe4525f841273844e821e5a248c8257d, type: 3}
       propertyPath: itemName
       value: Paper4
@@ -6554,7 +6553,7 @@ PrefabInstance:
     - target: {fileID: 1200459960415377115, guid: fe4525f841273844e821e5a248c8257d, type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: 21300000, guid: 909b94339048c1e45a847e96d8035d60, type: 3}
+      objectReference: {fileID: 21300000, guid: 0da45a666ec2df74591b659d52e3e119, type: 3}
     - target: {fileID: 1200459960415377115, guid: fe4525f841273844e821e5a248c8257d, type: 3}
       propertyPath: itemName
       value: Paper5
@@ -7126,7 +7125,7 @@ PrefabInstance:
     - target: {fileID: 1200459960415377115, guid: fe4525f841273844e821e5a248c8257d, type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: 21300000, guid: f345fcebd23d0a04ea68c79fea911a9a, type: 3}
+      objectReference: {fileID: 21300000, guid: 909b94339048c1e45a847e96d8035d60, type: 3}
     - target: {fileID: 1200459960415377115, guid: fe4525f841273844e821e5a248c8257d, type: 3}
       propertyPath: itemName
       value: Paper1

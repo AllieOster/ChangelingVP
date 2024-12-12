@@ -9,13 +9,6 @@ public class DropZonePapers : MonoBehaviour
 {
     public List<Item> papersInOrder = new List<Item>();
     public List<Item> givenPapers = new List<Item>();
-
-    public void OnMouseDown()
-    {
-        Debug.Log("cliqué sur directeur");
-    }
-    public List<Item> droppedItems = new List<Item>();
-
     public void AddToGivenList(Item item)
     {
         if (item != null)
@@ -74,6 +67,8 @@ public class DropZonePapers : MonoBehaviour
     private void ResetGivenPapers()
     {
         givenPapers.Clear();
-        gameObject.SetActive(true);
+        foreach (var papers in givenPapers){
+        papers.gameObject.SetActive(true);
+        }
     }
 }

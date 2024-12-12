@@ -73,6 +73,7 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
             {
                 Item currentItem = inventoryManager.inventoryItems[currentSlotIndex];
                 dropZone.AddToGivenList(currentItem); 
+                rt.position = initialPosition; 
                 gameObject.SetActive(false); 
             }
         }
