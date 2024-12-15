@@ -60,7 +60,8 @@ public class DropZonePapers : MonoBehaviour
         {
             Debug.Log("Niveau validé !");
             ResetGivenPapers();
-            // Appeler méthode de validation ici ! =) 
+            GameManager.Instance.SetGameState(GameState.TransitionLvl2);
+            LoadSceneManager.ChangeScene("TransitionTwoScene");
         }
     }
 

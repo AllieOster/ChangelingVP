@@ -12,8 +12,6 @@ public class CluesManager : MonoBehaviour
         Proj,
         Director, 
     }
-
-
     public void DeactivateClue (Clues clue)
     {
         switch (clue)

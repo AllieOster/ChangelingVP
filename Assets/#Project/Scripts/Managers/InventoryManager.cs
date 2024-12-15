@@ -127,19 +127,18 @@ public class InventoryManager : MonoBehaviour
     }
     
     public void RemoveItem(Item itemToRemove) // Recommencer, ça marche pas. 
-{
-    if (inventoryItems.Contains(itemToRemove))
     {
-        inventoryItems.Remove(itemToRemove);
-        for (int i = 0; i < slots.Length; i++)
+        if (inventoryItems.Contains(itemToRemove))
         {
-            if (slots[i].sprite == itemToRemove.icon) // POURQUOIIII ???
+            inventoryItems.Remove(itemToRemove);
+            for (int i = 0; i < slots.Length; i++)
             {
-                slots[i].sprite = null; // Enlève uniquement l'icône de l'inventaire
-                break; 
+                if (slots[i].sprite == itemToRemove.icon) // POURQUOIIII ???
+                {
+                    slots[i].sprite = null; // Enlève uniquement l'icône de l'inventaire
+                    break; 
+                }
             }
         }
     }
-}
-
 }
